@@ -10,6 +10,8 @@ $res=checkConnection($endpoint, $username, $password);
 
 print_r($res);
 
+// testing
+
 /*if (array_key_exists("statements",$decoded))
 	echo "works...";
 
