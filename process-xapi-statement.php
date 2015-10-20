@@ -24,7 +24,7 @@ $userpwd=get_option("h5pxapi_username").":".get_option("h5pxapi_password");
 
 $headers=array(
 	"Content-Type: application/json",
-	"X-Experience-API-Version: 1.0.1",
+	"X-Experience-API-Version: 1.0.2",
 );
 
 $curl=curl_init();

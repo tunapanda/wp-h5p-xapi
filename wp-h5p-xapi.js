@@ -72,7 +72,22 @@ jQuery(function($) {
 		var data = {};
 		/*console.log("on xapi, statement:");
 		console.log(JSON.stringify(event.data.statement));*/
+		
+		if (typeof event.data.statement.context == 'undefined'){
+			console.log("here, context");
+			event.data.statement.context = {};
+		}
+		if (typeof event.data.statement.context.contextActivities == 'undefined'){
+			console.log("here, contextActivities");
+			event.data.statement.context.contextActivities = {};
+		}
+		if (typeof event.data.statement.context.contextActivities.grouping == 'undefined'){
+			console.log("here, grouping");
+			event.data.statement.context.contextActivities.grouping = [];
+		}
 
+		event.data.statement.context.contextActivities.grouping.push(WP_H5P_XAPI_CONTEXTACTIVITY);
+		
 		data.statement = JSON.stringify(event.data.statement);
 		//data.statement = event.data.statement;
 

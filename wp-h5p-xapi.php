@@ -21,7 +21,9 @@ function h5pxapi_enqueue_scripts() {
 	wp_register_style("wp-h5p-xapi",plugins_url()."/wp-h5p-xapi/wp-h5p-xapi.css");
 	wp_enqueue_style("wp-h5p-xapi");
 
-	$s.="<script>";
+
+
+	$s.="<script>\n";
 
 	if (get_option("h5pxapi_endpoint_url"))
 		$s.="WP_H5P_XAPI_STATEMENT_URL='".plugins_url()."/wp-h5p-xapi/process-xapi-statement.php';";
@@ -29,6 +31,18 @@ function h5pxapi_enqueue_scripts() {
 	else
 		$s.="WP_H5P_XAPI_STATEMENT_URL=null;";
 
+	$s.="\n";
+	$s.="WP_H5P_XAPI_CONTEXTACTIVITY= {
+		'id': '".get_permalink()."',
+		'definition': {
+			'type': 'http://activitystrea.ms/schema/1.0/page',
+			'name': {
+				'en': '".wp_title("|",FALSE)."'
+			},
+			'moreInfo': '".get_permalink()."'
+		}
+	};";
+	$s.="\n";
 	$s.="</script>";
 
 	echo $s;
