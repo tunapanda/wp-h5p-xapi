@@ -28,7 +28,8 @@ function h5pxapi_enqueue_scripts() {
 
 	else
 		$s.="WP_H5P_XAPI_STATEMENT_URL=null;";
-
+	
+	$s."WP_PAGE=" . the_permalink() . ";"
 	$s.="</script>";
 
 	echo $s;
