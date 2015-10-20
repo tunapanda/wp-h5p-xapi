@@ -29,7 +29,16 @@ function h5pxapi_enqueue_scripts() {
 	else
 		$s.="WP_H5P_XAPI_STATEMENT_URL=null;";
 	
-	$s."WP_PAGE=" . the_permalink() . ";"
+	$s."WP_H5P_XAPI_CONTEXTACTIVITY= {
+		'id': '".the_permalink()."',
+		'definition': {
+			'type': 'http://activitystrea.ms/schema/1.0/page',
+			'name': {
+				'en': '".wp_title()."'
+			},
+			'moreInfo': '".the_permalink()."'
+		}
+	};"
 	$s.="</script>";
 
 	echo $s;
