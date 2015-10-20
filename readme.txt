@@ -30,12 +30,12 @@ If you find this plugin useful we would like to know about it!
 == Installation ==
 Download the plugin and upload it in the plugins section of your wordpress instance.
 
-Optionally, you can do the following.
-1. Download and extract the plugin
-2. Put the extracted folder in your `/wp-content/plugins/` directory
-3. Navigate to your wordpress instance
-4. Login and active the plugin
-	
+= Optionally, you can do the following =
+1. Download and extract the plugin,
+2. Put the extracted folder in your `/wp-content/plugins/` directory,
+3. Navigate to your wordpress instance,
+4. Login and active the plugin,
+
 After installation you will find a settings page called H5P xAPI in the admin panel.
 You need to enter the credentials for the connection to the LRS there, please see screenshots and
 further instructions on the settings page.
