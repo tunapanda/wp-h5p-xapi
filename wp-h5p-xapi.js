@@ -72,7 +72,19 @@ jQuery(function($) {
 		var data = {};
 		/*console.log("on xapi, statement:");
 		console.log(JSON.stringify(event.data.statement));*/
-
+		
+		if (!typeof event.data.statement.context == 'object'){
+			event.data.statement.context = {};
+		}
+		if (!typeof event.data.statement.context.contextActivities == 'object'){
+			event.data.statement.context.contextActivities = {};
+		}
+		if (!typeof event.data.statement.context.contextActivities.grouping == 'array'){
+			event.data.statement.context.grouping = [];
+		}
+		
+		event.data.statement.context.grouping.push(WP_H5P_XAPI_CONTEXTACTIVITY);
+		
 		data.statement = JSON.stringify(event.data.statement);
 		//data.statement = event.data.statement;
 
