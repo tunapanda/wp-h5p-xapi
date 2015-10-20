@@ -52,6 +52,9 @@ if ($code!=200 || sizeof($decoded)!=1 || strlen($decoded[0])!=36) {
 
 	if ($decoded["message"])
 		$response["message"]=$decoded["message"];
+		
+	if (is_string($res))
+		$response["message"] = $res;
 
 	echo json_encode($response);
 	exit;
