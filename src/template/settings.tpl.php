@@ -16,7 +16,28 @@
     <p>
         The settings in this section specifies the URL and credentials when connecting to
         the LRS to store the statements.<br/><br/>
-        If you want to disable this module, leave the <b>xAPI Endpoint URL</b> field blank.
+        If you want to disable this module, leave the <b>xAPI Endpoint URL</b> field blank.<br/><br/>
+
+        The settings depend on the LRS you are using.<br/><br/> 
+        <strong>Learning Locker</strong><br/>
+        <ul><li>If you decide to use Learning Locker first, you need to ensure you have an instance running 
+        online or locally.</li> <br/>
+        <li>To set learning locker locally, follow the instructions 
+        <a href="http://docs.learninglocker.net/installation/">here</a>.</li><br/>
+        <li>If you haven't already, create an LRS in Learning locker.</li><br/>
+        <li>Then from the LRS clients get the clints Endpoint url, username and password.</li><br/>
+        <li>The setting info should be something like 
+        <strong><i><a id="pic">this</a></i></strong></li></ul>
+        <script>
+            jQuery(document).ready(function(){
+                jQuery("#settings").hide();
+                jQuery("#pic").click(function(){
+                    jQuery("#settings").toggle();
+                });
+            })
+        </script>
+        <img id="settings"src="<?php echo plugin_dir_url(__FILE__); ?>images/sample-settings.png"/>
+
     </p>
     <form method="post" action="options.php">
         <?php settings_fields( 'h5pxapi' ); ?>
