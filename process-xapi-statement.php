@@ -55,6 +55,10 @@ if ($code!=200 || sizeof($decoded)!=1 || strlen($decoded[0])!=36) {
 		
 	if (is_string($res))
 		$response["message"] = $res;
+	
+	if ($res == FALSE) {
+		$response["message"] = curl_error($curl);
+	}
 
 	echo json_encode($response);
 	exit;
