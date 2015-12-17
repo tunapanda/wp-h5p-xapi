@@ -18,26 +18,51 @@
         the LRS to store the statements.<br/><br/>
         If you want to disable this module, leave the <b>xAPI Endpoint URL</b> field blank.<br/><br/>
 
-        The settings depend on the LRS you are using.<br/><br/> 
-        <strong>Learning Locker</strong><br/>
-        <ul><li>If you decide to use Learning Locker first, you need to ensure you have an instance running 
-        online or locally.</li> <br/>
-        <li>To set learning locker locally, follow the instructions 
-        <a href="http://docs.learninglocker.net/installation/">here</a>.</li><br/>
-        <li>If you haven't already, create an LRS in Learning locker.</li><br/>
-        <li>Then from the LRS clients get the clints Endpoint url, username and password.</li><br/>
-        <li>The setting info should be something like 
-        <strong><i><a id="pic">this</a></i></strong></li></ul>
+        The settings depend on the LRS you are using, please see below on how to find 
+        this information depending on which LRS you are using.
+        <ul>
+            <li><strong>
+                <a href="#" class="h5p-xapi-lrs-toggle" toggle="#h5p-xapi-ll-instructions">
+                    Learning Locker
+                </a>
+            </strong></li>
+            <div class="h5p-xapi-lrs-instructions" id="h5p-xapi-ll-instructions">
+                <h4>Learning Locker</h4>
+                <ul>
+                    <li>First, you need to ensure you have an instance of Learning Locker
+                        running online or locally.</li><br/>
+                    <li>To set learning locker locally, follow the instructions 
+                        <a href="http://docs.learninglocker.net/installation/">here</a>.</li><br/>
+                    <li>If you haven't already, create an LRS in Learning Locker.</li><br/>
+                    <li>Then from the LRS clients get the clints Endpoint url, username and password.</li><br/>
+                    <li>The setting info should be something like on the screenshot below.</li><br/>
+                    <img src="<?php echo plugin_dir_url(__FILE__); ?>images/sample-settings.png"/>
+                </ul>
+            </div>
+            <li><strong>
+                <a href="#" class="h5p-xapi-lrs-toggle" toggle="#h5p-xapi-adl-instructions">
+                    ADL LRS
+                </a>
+            </strong></li>
+            <div class="h5p-xapi-lrs-instructions" id="h5p-xapi-adl-instructions">
+                <h4>ADL LRS</h4>
+                <ul>
+                    <li>You can can create a user for free at 
+                    <a href="https://lrs.adlnet.gov/xAPI/" target="_blank">ADL LRS</a>.</li><br/>
+                    <li>The username and password you enter below should be the same as you used
+                        to sign up there.</li><br/>
+                </ul>
+            </div>
+        </ul>
+
         <script>
             jQuery(document).ready(function(){
-                jQuery("#settings").hide();
-                jQuery("#pic").click(function(){
-                    jQuery("#settings").toggle();
+                jQuery(".h5p-xapi-lrs-toggle").click(function(){
+                    jQuery(jQuery(this).attr("toggle")).toggle();
+                    return false;
                 });
             })
         </script>
-        <img id="settings"src="<?php echo plugin_dir_url(__FILE__); ?>images/sample-settings.png"/>
-
     </p>
     <form method="post" action="options.php">
         <?php settings_fields( 'h5pxapi' ); ?>

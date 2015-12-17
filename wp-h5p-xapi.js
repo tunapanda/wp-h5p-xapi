@@ -72,22 +72,22 @@ jQuery(function($) {
 		var data = {};
 		/*console.log("on xapi, statement:");
 		console.log(JSON.stringify(event.data.statement));*/
-		
-		if (typeof event.data.statement.context == 'undefined'){
+
+		if (typeof event.data.statement.context == 'undefined') {
 			console.log("here, context");
 			event.data.statement.context = {};
 		}
-		if (typeof event.data.statement.context.contextActivities == 'undefined'){
+		if (typeof event.data.statement.context.contextActivities == 'undefined') {
 			console.log("here, contextActivities");
 			event.data.statement.context.contextActivities = {};
 		}
-		if (typeof event.data.statement.context.contextActivities.grouping == 'undefined'){
+		if (typeof event.data.statement.context.contextActivities.grouping == 'undefined') {
 			console.log("here, grouping");
 			event.data.statement.context.contextActivities.grouping = [];
 		}
 
 		event.data.statement.context.contextActivities.grouping.push(WP_H5P_XAPI_CONTEXTACTIVITY);
-		
+
 		data.statement = JSON.stringify(event.data.statement);
 		//data.statement = event.data.statement;
 
@@ -106,8 +106,10 @@ jQuery(function($) {
 	 * Create save spinner and register event listener.
 	 */
 	$(document).ready(function() {
-		console.log("ready");
-		H5P.externalDispatcher.on('xAPI', onXapi);
+		//console.log("h5p xapi ready");
+
+		if (typeof H5P !== 'undefined')
+			H5P.externalDispatcher.on('xAPI', onXapi);
 
 		$("body").append("<div id='wp-h5p-xapi-spinner'>Saving...</div>");
 		$("#wp-h5p-xapi-spinner").hide();

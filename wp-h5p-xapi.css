@@ -8,3 +8,10 @@
 	padding: 5px;
 	border-radius: 10px;
 }
+
+.h5p-xapi-lrs-instructions {
+	background: #ffffff;
+	border: 1px solid #ddd;
+	padding: 10px;
+	display: none;
+}

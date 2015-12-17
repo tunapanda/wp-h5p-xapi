@@ -74,11 +74,11 @@ function h5pxapi_admin_init() {
  * Create settings page.
  */
 function h5pxapi_create_settings_page() {
+	wp_register_style("wp-h5p-xapi",plugins_url()."/wp-h5p-xapi/wp-h5p-xapi.css");
+	wp_enqueue_style("wp-h5p-xapi");
+
 	$template=new Template(__DIR__."/src/template/settings.tpl.php");
-
 	$template->show();
-
-//	echo "hello world";
 }
 
 add_action('wp_enqueue_scripts','h5pxapi_enqueue_scripts');
