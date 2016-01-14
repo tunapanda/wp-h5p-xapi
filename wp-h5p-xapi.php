@@ -8,7 +8,7 @@ use h5pxapi\Template;
 Plugin Name: H5P xAPI
 Plugin URI: http://github.com/tunapanda/wp-h5p-xapi
 Description: Send H5P achievements to an xAPI repo.
-Version: 0.0.6
+Version: 0.0.7
 */
 
 /**
@@ -20,8 +20,6 @@ function h5pxapi_enqueue_scripts() {
 
 	wp_register_style("wp-h5p-xapi",plugins_url()."/wp-h5p-xapi/wp-h5p-xapi.css");
 	wp_enqueue_style("wp-h5p-xapi");
-
-
 
 	$s.="<script>\n";
 

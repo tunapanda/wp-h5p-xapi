@@ -7,6 +7,8 @@
 	margin: 10px;
 	padding: 5px;
 	border-radius: 10px;
+	z-index: 100000;
+	box-shadow: 0 0 2px 2px #404040;
 }
 
 .h5p-xapi-lrs-instructions {
