@@ -64,6 +64,8 @@ if ($code!=200 || sizeof($decoded)!=1 || strlen($decoded[0])!=36) {
 	exit;
 }
 
+do_action("h5p-xapi-post-save",$statementObject);
+
 $response=array(
 	"ok"=>1
 );

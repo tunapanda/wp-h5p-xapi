@@ -74,15 +74,15 @@ jQuery(function($) {
 		console.log(JSON.stringify(event.data.statement));*/
 
 		if (typeof event.data.statement.context == 'undefined') {
-			console.log("here, context");
+			//console.log("here, context");
 			event.data.statement.context = {};
 		}
 		if (typeof event.data.statement.context.contextActivities == 'undefined') {
-			console.log("here, contextActivities");
+			//console.log("here, contextActivities");
 			event.data.statement.context.contextActivities = {};
 		}
 		if (typeof event.data.statement.context.contextActivities.grouping == 'undefined') {
-			console.log("here, grouping");
+			//console.log("here, grouping");
 			event.data.statement.context.contextActivities.grouping = [];
 		}
 
