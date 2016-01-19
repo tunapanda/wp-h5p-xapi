@@ -20,7 +20,7 @@ if (isset($statementObject["context"]["extensions"])
 
 $content=json_encode($statementObject);
 
-error_log($content);
+//error_log($content);
 
 $url=get_option("h5pxapi_endpoint_url");
 if (substr($url,-1)!="/")
