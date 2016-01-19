@@ -13,7 +13,14 @@ use h5pxapi\WpUtil;
 require_once WpUtil::getWpLoadPath();
 
 $statementObject=json_decode(stripslashes($_REQUEST["statement"]),TRUE);
-$content=json_encode($statementObject);//."asdf";
+
+if (isset($statementObject["context"]["extensions"]) 
+		&& !$statementObject["context"]["extensions"])
+	unset($statementObject["context"]["extensions"]);
+
+$content=json_encode($statementObject);
+
+error_log($content);
 
 $url=get_option("h5pxapi_endpoint_url");
 if (substr($url,-1)!="/")
