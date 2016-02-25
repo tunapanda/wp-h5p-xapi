@@ -6,6 +6,7 @@
 
 require_once __DIR__."/src/utils/Template.php";
 require_once __DIR__."/src/utils/WpUtil.php";
+require_once __DIR__."/plugin.php";
 
 use h5pxapi\Template;
 use h5pxapi\WpUtil;
@@ -18,16 +19,28 @@ if (isset($statementObject["context"]["extensions"])
 		&& !$statementObject["context"]["extensions"])
 	unset($statementObject["context"]["extensions"]);
 
+if (has_filter("h5p-xapi-pre-save")) {
+	$statementObject=apply_filters("h5p-xapi-pre-save",$statementObject);
+
+	if (!$statementObject) {
+		echo json_encode(array(
+			"ok"=>1
+		));
+		exit;
+	}
+}
+
+$settings=h5pxapi_get_auth_settings();
 $content=json_encode($statementObject);
 
 //error_log($content);
 
-$url=get_option("h5pxapi_endpoint_url");
+$url=$settings["endpoint_url"];
 if (substr($url,-1)!="/")
 	$url.="/";
 $url.="statements";
 
-$userpwd=get_option("h5pxapi_username").":".get_option("h5pxapi_password");
+$userpwd=$settings["username"].":".$settings["password"];
 
 $headers=array(
 	"Content-Type: application/json",

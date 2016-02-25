@@ -27,6 +27,26 @@ further instructions on the settings page.
 If you find this plugin useful we would like to know about it! 
 [Tell us your story!](http://www.tunapanda.org/#contact).
 
+= For developers =
+
+This plugin makes the following hooks available:
+
+* `h5p-xapi-pre-save` <br>
+This filter is applied before the statement is saved. Plugins implementing this filter have
+a chance to modify or add information to the statement to be saved. It's also possible to
+block the statement from being saved by returning NULL.
+
+* `h5p-xapi-post-save` <br>
+This action is triggered after a statement has been saved to xAPI. The statement that
+was just saved is passed to the action as a parameter in the form of an array.
+
+* `h5p-xapi-auth-settings` <br>
+This filter is applied as a means for other plugins to provide settings for connecting
+to the xAPI backend. If this filter is implemented, the wp-h5p-xapi plugin will pick up the
+connection settings from there and operate in the background, i.e. not show any settings
+page. The filter function should return an array contining the 
+keys `endpoint_url`, `username` and `password`.
+
 == Installation ==
 Download the plugin and upload it in the plugins section of your wordpress instance.
 
@@ -34,7 +54,7 @@ Download the plugin and upload it in the plugins section of your wordpress insta
 1. Download and extract the plugin,
 2. Put the extracted folder in your `/wp-content/plugins/` directory,
 3. Navigate to your wordpress instance,
-4. Login and active the plugin,
+4. Login and active the plugin.
 
 After installation you will find a settings page called H5P xAPI in the admin panel.
 You need to enter the credentials for the connection to the LRS there, please see screenshots and
