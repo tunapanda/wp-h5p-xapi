@@ -36,6 +36,13 @@ $content=json_encode($statementObject);
 //error_log($content);
 
 $url=$settings["endpoint_url"];
+if (!trim($url)) {
+	echo json_encode(array(
+		"ok"=>1
+	));
+	exit;
+}
+
 if (substr($url,-1)!="/")
 	$url.="/";
 $url.="statements";

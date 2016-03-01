@@ -8,7 +8,7 @@ use h5pxapi\Template;
 Plugin Name: H5P xAPI
 Plugin URI: http://github.com/tunapanda/wp-h5p-xapi
 Description: Send H5P achievements to an xAPI repo.
-Version: 0.1.0
+Version: 0.1.2
 */
 
 /**
@@ -30,16 +30,22 @@ function h5pxapi_enqueue_scripts() {
 		$s.="WP_H5P_XAPI_STATEMENT_URL=null;";
 
 	$s.="\n";
-	$s.="WP_H5P_XAPI_CONTEXTACTIVITY= {
-		'id': '".get_permalink()."',
-		'definition': {
-			'type': 'http://activitystrea.ms/schema/1.0/page',
-			'name': {
-				'en': '".wp_title("|",FALSE)."'
-			},
-			'moreInfo': '".get_permalink()."'
-		}
-	};";
+
+	// Permalink is not available in the admin interface.
+	if (get_permalink()) {
+		$s.="WP_H5P_XAPI_CONTEXTACTIVITY= {
+			'id': '".get_permalink()."',
+			'definition': {
+				'type': 'http://activitystrea.ms/schema/1.0/page',
+				'name': {
+					'en': '".wp_title("|",FALSE)."'
+				},
+				'moreInfo': '".get_permalink()."'
+			}
+		};";
+	} else {
+		$s.="WP_H5P_XAPI_CONTEXTACTIVITY=null;";
+	}
 	$s.="\n";
 	$s.="</script>";
 
@@ -84,5 +90,6 @@ function h5pxapi_create_settings_page() {
 }
 
 add_action('wp_enqueue_scripts','h5pxapi_enqueue_scripts');
+add_action('admin_enqueue_scripts','h5pxapi_enqueue_scripts');
 add_action('admin_menu','h5pxapi_admin_menu');
 add_action('admin_init','h5pxapi_admin_init');

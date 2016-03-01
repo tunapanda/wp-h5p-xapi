@@ -86,7 +86,8 @@ jQuery(function($) {
 			event.data.statement.context.contextActivities.grouping = [];
 		}
 
-		event.data.statement.context.contextActivities.grouping.push(WP_H5P_XAPI_CONTEXTACTIVITY);
+		if (WP_H5P_XAPI_CONTEXTACTIVITY)
+			event.data.statement.context.contextActivities.grouping.push(WP_H5P_XAPI_CONTEXTACTIVITY);
 
 		data.statement = JSON.stringify(event.data.statement);
 		//data.statement = event.data.statement;
@@ -108,7 +109,7 @@ jQuery(function($) {
 	$(document).ready(function() {
 		//console.log("h5p xapi ready");
 
-		if (typeof H5P !== 'undefined')
+		if (typeof H5P !== 'undefined' && H5P.externalDispatcher)
 			H5P.externalDispatcher.on('xAPI', onXapi);
 
 		$("body").append("<div id='wp-h5p-xapi-spinner'>Saving...</div>");
