@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__."/src/utils/Template.php";
+require_once __DIR__."/plugin.php";
 
 use h5pxapi\Template;
 
@@ -8,7 +9,7 @@ use h5pxapi\Template;
 Plugin Name: H5P xAPI
 Plugin URI: http://github.com/tunapanda/wp-h5p-xapi
 Description: Send H5P achievements to an xAPI repo.
-Version: 0.1.2
+Version: 0.1.3
 */
 
 /**
@@ -23,7 +24,9 @@ function h5pxapi_enqueue_scripts() {
 
 	$s.="<script>\n";
 
-	if (get_option("h5pxapi_endpoint_url"))
+	$settings=h5pxapi_get_auth_settings();
+
+	if ($settings && $settings["endpoint_url"])
 		$s.="WP_H5P_XAPI_STATEMENT_URL='".plugins_url()."/wp-h5p-xapi/process-xapi-statement.php';";
 
 	else

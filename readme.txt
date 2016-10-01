@@ -3,7 +3,7 @@ Contributors: Tunapanda
 Donate link: http://www.tunapanda.org/contribute
 Tags: xapi, h5p, admin, learning, integration, lms, learning management system
 Requires at least: 3.8.1
-Tested up to: 4.2.2
+Tested up to: 4.6.1
 Stable tag: trunk
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
