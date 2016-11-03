@@ -8,8 +8,9 @@ use h5pxapi\Template;
 /*
 Plugin Name: H5P xAPI
 Plugin URI: http://github.com/tunapanda/wp-h5p-xapi
+GitHub Plugin URI: https://github.com/tunapanda/wp-h5p-xapi
 Description: Send H5P achievements to an xAPI repo.
-Version: 0.1.4
+Version: 0.1.5
 */
 
 /**
