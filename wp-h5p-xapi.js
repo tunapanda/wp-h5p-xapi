@@ -58,6 +58,13 @@ jQuery(function($) {
 			console.log(xhr.responseText);
 			showError(res.message, res.code);
 		}
+
+		if (res.ok) {
+			$.event.trigger({
+				type: "h5pXapiStatementSaved",
+				message: res.message
+			});
+		}
 	}
 
 	/**

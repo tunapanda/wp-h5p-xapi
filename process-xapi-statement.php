@@ -1,5 +1,7 @@
 <?php
 
+$h5pxapi_response_message=NULL;
+
 /**
  * This file receives the xAPI statement as a http post.
  */
@@ -24,7 +26,8 @@ if (has_filter("h5p-xapi-pre-save")) {
 
 	if (!$statementObject) {
 		echo json_encode(array(
-			"ok"=>1
+			"ok"=>1,
+			"message"=>$h5pxapi_response_message
 		));
 		exit;
 	}
@@ -38,7 +41,8 @@ $content=json_encode($statementObject);
 $url=$settings["endpoint_url"];
 if (!trim($url)) {
 	echo json_encode(array(
-		"ok"=>1
+		"ok"=>1,
+		"message"=>$h5pxapi_response_message
 	));
 	exit;
 }
@@ -94,7 +98,8 @@ if ($code!=200 || sizeof($decoded)!=1 || strlen($decoded[0])!=36) {
 do_action("h5p-xapi-post-save",$statementObject);
 
 $response=array(
-	"ok"=>1
+	"ok"=>1,
+	"message"=>$h5pxapi_response_message
 );
 
 echo json_encode($response);
