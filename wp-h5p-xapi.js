@@ -25,8 +25,11 @@ jQuery(function($) {
 	 */
 	function showError(message, code) {
 		console.error("Unable to save xAPI statement");
-
-		alert("Unable to save result data.\n\nMessage: " + message + "\n" + "Code: " + code);
+                if( WP_H5P_XAPI_ALERTS == true ){
+                    alert("Unable to save result data.\n\nMessage: " + message + "\n" + "Code: " + code);
+                } else {
+                    console.log("Unable to save result data.\n\nMessage: " + message + "\n" + "Code: " + code);
+                }
 	}
 
 	/**

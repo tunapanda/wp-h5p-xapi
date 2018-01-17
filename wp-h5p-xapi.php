@@ -35,7 +35,11 @@ function h5pxapi_enqueue_scripts() {
 		$s.="WP_H5P_XAPI_STATEMENT_URL=null;";
 
 	$s.="\n";
-
+        
+        $s.= "WP_H5P_XAPI_ALERTS=";
+        $s .= ($settings['h5pxapi_alerts'] == "on") ? "true;" : "false;";
+        $s.= "\n";
+        
 	// Permalink is not available in the admin interface.
 	if (get_permalink()) {
 		$s.="WP_H5P_XAPI_CONTEXTACTIVITY= {
@@ -81,6 +85,7 @@ function h5pxapi_admin_init() {
 	register_setting("h5pxapi","h5pxapi_endpoint_url");
 	register_setting("h5pxapi","h5pxapi_username");
 	register_setting("h5pxapi","h5pxapi_password");
+        register_setting("h5pxapi", "h5pxapi_alerts");
 }
 
 /**
