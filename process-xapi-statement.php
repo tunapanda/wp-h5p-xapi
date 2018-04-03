@@ -21,7 +21,7 @@ if (isset($statementObject["context"]["extensions"])
 		&& !$statementObject["context"]["extensions"])
 	unset($statementObject["context"]["extensions"]);
 
-if (has_filter("h5p-xapi-pre-save")) {
+if ( has_filter("h5p-xapi-pre-save")) {
 	$statementObject=apply_filters("h5p-xapi-pre-save",$statementObject);
 
 	if (!$statementObject) {
