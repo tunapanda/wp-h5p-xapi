@@ -16,6 +16,7 @@ Version: 0.1.6
 /**
  * Enqueue scripts and stylesheets.
  */
+
 function h5pxapi_enqueue_scripts()
 {
     wp_register_script("wp-h5p-xapi", plugins_url() . "/wp-h5p-xapi/wp-h5p-xapi.js", array("jquery"));
@@ -45,6 +46,7 @@ function h5pxapi_enqueue_scripts()
     }
 
     wp_localize_script('wp-h5p-xapi', 'xapi_settings', $xapi_js_settings);
+
 }
 
 /**
@@ -68,11 +70,13 @@ function h5pxapi_admin_menu()
 /**
  * Admin init.
  */
-function h5pxapi_admin_init()
-{
-    register_setting("h5pxapi", "h5pxapi_endpoint_url");
-    register_setting("h5pxapi", "h5pxapi_username");
-    register_setting("h5pxapi", "h5pxapi_password");
+
+function h5pxapi_admin_init() {
+	register_setting("h5pxapi","h5pxapi_endpoint_url");
+	register_setting("h5pxapi","h5pxapi_username");
+	register_setting("h5pxapi","h5pxapi_password");
+  register_setting("h5pxapi", "h5pxapi_alerts");
+
 }
 
 /**
