@@ -95,7 +95,7 @@ if ($code!=200 || sizeof($decoded)!=1 || strlen($decoded[0])!=36) {
 	exit;
 }
 
-$h5pxapi_response_message = apply_filters("h5p-xapi-post-save",$statementObject);
+$h5pxapi_response_message = apply_filters("h5p-xapi-post-save",$statementObject,$decoded);
 
 $response=array(
 	"ok"=>1,
