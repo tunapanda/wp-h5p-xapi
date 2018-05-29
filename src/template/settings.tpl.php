@@ -94,6 +94,14 @@
                         class="regular-text"/>
                 </td>
             </tr>
+            <tr valign="top">
+                <th scope="row">Alerts On <small>(un-checking will make debug statements happen to console instead of alert)</small></th>
+                <td>
+                    <input type="checkbox" name="h5pxapi_alerts" 
+                       <?php echo (get_option("h5pxapi_alerts") == "on" )? 'checked="checked"' : ''; ?> />
+                    
+                </td>
+            </tr>
         </table>
 
         <?php submit_button(); ?>

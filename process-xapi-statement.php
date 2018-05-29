@@ -13,7 +13,7 @@ require_once __DIR__."/plugin.php";
 use h5pxapi\Template;
 use h5pxapi\WpUtil;
 
-require_once WpUtil::getWpLoadPath();
+// require_once WpUtil::getWpLoadPath();
 
 $statementObject=json_decode(stripslashes($_REQUEST["statement"]),TRUE);
 
@@ -21,7 +21,7 @@ if (isset($statementObject["context"]["extensions"])
 		&& !$statementObject["context"]["extensions"])
 	unset($statementObject["context"]["extensions"]);
 
-if (has_filter("h5p-xapi-pre-save")) {
+if ( has_filter("h5p-xapi-pre-save")) {
 	$statementObject=apply_filters("h5p-xapi-pre-save",$statementObject);
 
 	if (!$statementObject) {
@@ -95,7 +95,7 @@ if ($code!=200 || sizeof($decoded)!=1 || strlen($decoded[0])!=36) {
 	exit;
 }
 
-do_action("h5p-xapi-post-save",$statementObject);
+$h5pxapi_response_message = apply_filters("h5p-xapi-post-save",$statementObject);
 
 $response=array(
 	"ok"=>1,

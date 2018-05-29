@@ -17,7 +17,8 @@ function h5pxapi_get_auth_settings() {
 		$settings=array(
 			"endpoint_url"=>get_option("h5pxapi_endpoint_url"),
 			"username"=>get_option("h5pxapi_username"),
-			"password"=>get_option("h5pxapi_password")
+			"password"=>get_option("h5pxapi_password"),
+                        "alerts" => get_option("h5pxapi_alerts"),
 		);
 	}
 

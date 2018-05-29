@@ -25,8 +25,11 @@ jQuery(function($) {
 	 */
 	function showError(message, code) {
 		console.error("Unable to save xAPI statement");
-
-		alert("Unable to save result data.\n\nMessage: " + message + "\n" + "Code: " + code);
+                if( xapi_settings.alerts == true ){
+                    alert("Unable to save result data.\n\nMessage: " + message + "\n" + "Code: " + code);
+                } else {
+                    console.log("Unable to save result data.\n\nMessage: " + message + "\n" + "Code: " + code);
+                }
 	}
 
 	/**
@@ -71,12 +74,14 @@ jQuery(function($) {
 	 * xAPI statement event listener.
 	 */
 	function onXapi(event) {
-		if (!WP_H5P_XAPI_STATEMENT_URL)
+		if (!xapi_settings.ajax_url)
 			return;
 
 		showSpinner();
 
-		var data = {};
+		var data = {
+			action: 'xapi_event'
+		};
 		/*console.log("on xapi, statement:");
 		console.log(JSON.stringify(event.data.statement));*/
 
@@ -93,15 +98,15 @@ jQuery(function($) {
 			event.data.statement.context.contextActivities.grouping = [];
 		}
 
-		if (WP_H5P_XAPI_CONTEXTACTIVITY)
-			event.data.statement.context.contextActivities.grouping.push(WP_H5P_XAPI_CONTEXTACTIVITY);
+		if (xapi_settings.context_activity)
+			event.data.statement.context.contextActivities.grouping.push(xapi_settings.context_activity);
 
 		data.statement = JSON.stringify(event.data.statement);
 		//data.statement = event.data.statement;
 
 		$.ajax({
 			type: "POST",
-			url: WP_H5P_XAPI_STATEMENT_URL,
+			url: xapi_settings.ajax_url,
 			data: data,
 			dataType: "json",
 			success: onXapiPostSuccess,
