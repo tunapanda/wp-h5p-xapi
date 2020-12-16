@@ -19,10 +19,10 @@ Version: 0.1.6
 
 function h5pxapi_enqueue_scripts()
 {
-    wp_register_script("wp-h5p-xapi", plugins_url() . "/wp-h5p-xapi/wp-h5p-xapi.js", array("jquery"));
+    wp_register_script("wp-h5p-xapi", plugins_url("/wp-h5p-xapi.js", __FILE__), array("jquery"));
     wp_enqueue_script("wp-h5p-xapi");
 
-    wp_register_style("wp-h5p-xapi", plugins_url() . "/wp-h5p-xapi/wp-h5p-xapi.css");
+    wp_register_style("wp-h5p-xapi", plugins_url("/wp-h5p-xapi.css", __FILE__));
     wp_enqueue_style("wp-h5p-xapi");
 
     $xapi_js_settings = array();
@@ -84,7 +84,7 @@ function h5pxapi_admin_init() {
  */
 function h5pxapi_create_settings_page()
 {
-    wp_register_style("wp-h5p-xapi", plugins_url() . "/wp-h5p-xapi/wp-h5p-xapi.css");
+    wp_register_style("wp-h5p-xapi", plugins_url("/wp-h5p-xapi/wp-h5p-xapi.css", __FILE__));
     wp_enqueue_style("wp-h5p-xapi");
 
     $template = new Template(__DIR__ . "/src/template/settings.tpl.php");
